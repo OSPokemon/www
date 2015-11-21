@@ -1,0 +1,16 @@
+#entrybox {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  margin-left: -240px;
+  width: 480px;
+}
+
+#entrybox input {
+  margin-top: 8px;
+}
+
+#invalidLogin {
+  display: none;
+  margin-bottom: 0px;
+}

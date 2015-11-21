@@ -1,0 +1,9 @@
+body {
+	cursor: crosshair;
+  /*padding-bottom: 70px;*/
+}
+
+.entitiy {
+  border: 2px solid green
+  border-radius: 3px;
+}

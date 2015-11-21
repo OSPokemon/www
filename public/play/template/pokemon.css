@@ -1,0 +1,24 @@
+.template-pokemon {
+  position: relative;
+}
+
+.template-pokemon img {
+  position: relative;
+  margin-left: -32px;
+  margin-top: -32px;
+  width: 64px;
+  height: 64px;
+}
+
+.template-pokemon .healthbar {
+  position: relative;
+  margin-left: -32px;
+  margin-top: -32px;
+}
+
+.template-pokemon .castbar {
+  position: relative;
+  display: none;
+  margin-left: -32px;
+  margin-top: -24px;
+}
