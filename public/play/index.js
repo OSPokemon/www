@@ -31,15 +31,14 @@ $(function() {
     if (e.button == 2) {
       if (rclick && ospokemon.ui.active) {
         rclick.x -= ospokemon.entities[ospokemon.ui.active].Physics.Width/2;
+        rclick.x -= ospokemon.ui.camera.offset.x;
         rclick.y -= ospokemon.entities[ospokemon.ui.active].Physics.Height/2;
+        rclick.y -= ospokemon.ui.camera.offset.y;
 
         var message = {
           entity: ospokemon.ui.active,
           ability: 'walk',
-          target: {
-            x: rclick.x - ospokemon.ui.camera.offset.x,
-            y: rclick.y - ospokemon.ui.camera.offset.y
-          }
+          target: rclick
         };
 
         ospokemon.connection.send(JSON.stringify(message));

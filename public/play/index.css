@@ -13,15 +13,14 @@ body {
 
 #ospokemon-camera .viewport {
   position: relative;
-  border: 1px solid red;
 }
 
 .ospokemon-entity {
-  position: relative;
-  border: 1px solid black;
-  border-radius: 10px;
+  position: fixed;
+  border-radius: 32px;
+  border: 2px solid transparent;
 }
 
 .ospokemon-entity.active {
-  border: 2px solid green;
+  border-color: green;
 }

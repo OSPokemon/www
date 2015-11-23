@@ -12,3 +12,15 @@ VALUES (1, "health", 18, 19, 670);
 
 INSERT INTO players_pokemon (player_id, box, pokemon_id)
 VALUES (1, 0, 1);
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 63, 0, "pokemon-63-walkdown.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 63, 1, "pokemon-63-walkright.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 63, 2, "pokemon-63-walkup.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 63, 3, "pokemon-63-walkleft.gif");
