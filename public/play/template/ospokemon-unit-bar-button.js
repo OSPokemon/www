@@ -3,7 +3,6 @@ Reckoner.provide('ospokemon-unit-bar-button', function(unitBar) {
 
   var me = this;
   $(this).click(function() {
-    $(me).toggleClass("active");
     me.unitBar.click(me);
   });
 

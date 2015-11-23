@@ -1,0 +1,14 @@
+INSERT INTO players (name, class, health, maxhealth, x, y, password) 
+VALUES ("zach", 1, 100, 100, 500, 500, "password");
+
+INSERT INTO pokemon (name, x, y, species, level, experience, ability, friendship, gender, nature, height, weight, originaltrainer, shiny, item)
+VALUES ("abra", 550, 550, 63, 10, 200, 1, 85, 1, 1, 52.5, 40.1, 1, 0, 0);
+
+INSERT INTO pokemon_stats (pokemon_id, stat, ev, iv, value)
+VALUES (1, "speed", 20, 16, 30);
+
+INSERT INTO pokemon_stats (pokemon_id, stat, ev, iv, value)
+VALUES (1, "health", 18, 19, 670);
+
+INSERT INTO players_pokemon (player_id, box, pokemon_id)
+VALUES (1, 0, 1);

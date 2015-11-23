@@ -1,9 +1,27 @@
 body {
 	cursor: crosshair;
+  overflow-x: hidden;
   /*padding-bottom: 70px;*/
 }
 
-.entitiy {
-  border: 2px solid green
-  border-radius: 3px;
+#ospokemon-camera {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#ospokemon-camera .viewport {
+  position: relative;
+  border: 1px solid red;
+}
+
+.ospokemon-entity {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.ospokemon-entity.active {
+  border: 2px solid green;
 }

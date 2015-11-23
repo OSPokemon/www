@@ -16,57 +16,78 @@ $(function() {
     constructors[name] = constructor;
     searching[name]--;
 
-    if (searching[name] == 0) {
-      Reckoner.sweep(name);
-    }
+    if (searching[name] == 0) Reckoner.sweep(name);
   }
 
   Reckoner.search = function(name) {
-    if (constructors[name]) return;
+    if (searching[name] !== undefined) return;
 
     searching[name] = 3;
 
-    $.getScript(Reckoner.js_root + name + ".js")
+    var js_path = Reckoner.buildJsPath(name);
+    $.getScript(js_path)
     .done(function() {
-      searching[name]--
+      searching[name]--;
       if (searching[name] == 0) Reckoner.sweep(name);
     })
     .fail(function() {
-      searching[name] -= 2
+      searching[name] -= 2;
       if (searching[name] == 0) Reckoner.sweep(name);
     });
 
-    var link = $('<link id="' + name + '-template" src="' + Reckoner.html_root + name + '.html"></link>');
-    link.id = name+"-template";
+    var html_path = Reckoner.buildHtmlPath(name);
+    var link = $('<link id="' + name + '-template" src="' + html_path + '"></link>');
     $('head').append(link);
-    link.load(Reckoner.html_root + name + ".html", function() {
+    link.load(html_path, function() {
       searching[name]--
       if (searching[name] == 0) Reckoner.sweep(name);
     });
   }
 
-  Reckoner.build = function(name, config) {
-    if (searching[name] != 0) {
-      Reckoner.search(name);
-      return;
-    }
+  Reckoner.buildJsPath = function(name) {
+    return Reckoner.js_root + name + '.js';
+  }
 
-    var template = $("#"+name+"-template").children()[0];
-    var view = template.cloneNode(true);
-    applyAttributes(config, view);
-    constructors[name].apply(view, [config])
+  Reckoner.buildHtmlPath = function(name) {
+    return Reckoner.html_root + name + '.html';
+  }
+
+  Reckoner.build = function(name, config) {
+    if (searching[name] != 0) return;
+
+    var view = Reckoner.constructView(name);
+    if (!view) return;
+    Reckoner.embedController(view, name, config);
 
     return view;
   }
 
+  Reckoner.constructView = function(name) {
+    var template = $("#"+name+"-template").children()[0];
+    if (!template) return;
+    return template.cloneNode(true);
+  }
+
+  Reckoner.embedController = function(node, name, config) {
+    constructors[name].apply(node, [config]);
+  }
+
   Reckoner.sweep = function(name) {
     var nodes = $(name);
+
     for (var i=0; i<nodes.length; i++) {
       var node = nodes[i];
-      var view = Reckoner.build(name);
-      var attributes = transformAttributesMap(node.attributes);
-      applyAttributes(attributes, view);
-      node.parentNode.replaceChild(view, node);
+      var view = Reckoner.constructView(name);
+
+      if (view) {
+        applyAttributes(node, view);
+        node.parentNode.replaceChild(view, node);
+      }
+      else {
+        view = node;
+      }
+
+      Reckoner.embedController(view, name);
     }
 
     Reckoner.reckon();
@@ -80,18 +101,10 @@ $(function() {
     }
   }
 
-  function transformAttributesMap(src) {
-    var map = {};
-    for (var key in src) {
-      var node = src[key];
-      if (node.nodeName) map[node.nodeName] = node.nodeValue
-    }
-    return map;
-  }
-
-  function applyAttributes(map, node) {
-    for (var key in map) {
-      node.setAttribute(key, map[key]);
+  function applyAttributes(src, dst) {
+    for (var i=0; i<src.attributes.length; i++) {
+      var attributeNode = src.attributes[i];
+      dst.setAttribute(attributeNode.nodeName, attributeNode.nodeValue)
     }
   }
 });
