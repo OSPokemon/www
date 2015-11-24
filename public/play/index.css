@@ -15,8 +15,17 @@ body {
   position: relative;
 }
 
+.ospokemon-action-bar {
+  /*height: 64px;*/
+}
+
+.ospokemon-action-bar .navbar-brand {
+  padding: 0px;
+  height: 64px;
+}
+
 .ospokemon-entity {
-  position: fixed;
+  position: absolute;
   border-radius: 32px;
   border: 2px solid transparent;
 }

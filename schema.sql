@@ -12,30 +12,6 @@ CREATE TABLE class(
   description TEXT
 );
 
-CREATE TABLE moves(
-  id INTEGER PRIMARY KEY NOT NULL,
-  name TEXT,
-  t INTEGER,
-  category TEXT,
-  description TEXT,
-  pp INTEGER,
-  power INTEGER,
-  accuracy NUMBER,
-  targeter INTEGER,
-  casttime NUMBER,
-  cooldown NUMBER,
-  contestcategory INTEGER,
-  appeal INTEGER,
-  jam INTEGER,
-  contestdescription TEXT,
-  priority INTEGER
-);
-
-CREATE TABLE moves_pokemon(
-  move_id INTEGER,
-  pokemon_id INTEGER
-);
-
 CREATE TABLE players(
   id INTEGER PRIMARY KEY NOT NULL,
   name TEXT,
@@ -47,13 +23,13 @@ CREATE TABLE players(
   password TEXT
 );
 
-create table players_pokemon(
+CREATE TABLE players_pokemon(
   player_id INTEGER,
   box INTEGER,
   pokemon_id INTEGER
 );
 
-create table pokemon(
+CREATE TABLE pokemon(
   id INTEGER PRIMARY KEY NOT NULL,
   name TEXT,
   x NUMBER,
@@ -72,12 +48,35 @@ create table pokemon(
   item INTEGER
 );
 
-create table pokemon_stats(
+CREATE TABLE pokemon_spells(
+  pokemon_id INTEGER,
+  keybinding TEXT,
+  spell_id INTEGER
+);
+
+CREATE TABLE pokemon_stats(
   pokemon_id INTEGER,
   stat TEXT,
   ev INTEGER,
   iv INTEGER,
   value INTEGER
+);
+
+CREATE TABLE spells(
+  id INTEGER PRIMARY KEY NOT NULL,
+  name TEXT,
+  casttime NUMBER,
+  cooldown NUMBER,
+  movecast INTEGER,
+  manacost INTEGER,
+  range NUMBER,
+  targettype INTEGER
+);
+
+CREATE TABLE spell_reagents(
+  spell_id INTEGER,
+  item_id INTEGER,
+  quantity INTEGER
 );
 
 -- CREATE TABLE species(

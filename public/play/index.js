@@ -17,6 +17,7 @@ $(function() {
 
     ospokemon.ui.unitbar.update();
     ospokemon.ui.camera.update();
+    ospokemon.ui.actionbar.update();
   };
 
   // mouse control
@@ -37,8 +38,7 @@ $(function() {
 
         var message = {
           entity: ospokemon.ui.active,
-          ability: 'walk',
-          target: rclick
+          walk: rclick
         };
 
         ospokemon.connection.send(JSON.stringify(message));

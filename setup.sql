@@ -14,13 +14,22 @@ INSERT INTO players_pokemon (player_id, box, pokemon_id)
 VALUES (1, 0, 1);
 
 INSERT INTO animations (type, id, animationtype, animation)
-VALUES ("pokemon", 63, 0, "pokemon-63-walkdown.gif");
+VALUES ("pokemon", 63, 0, "pokemon-63-portrait.png");
 
 INSERT INTO animations (type, id, animationtype, animation)
-VALUES ("pokemon", 63, 1, "pokemon-63-walkright.gif");
+VALUES ("pokemon", 63, 1, "pokemon-63-walkdown.gif");
 
 INSERT INTO animations (type, id, animationtype, animation)
-VALUES ("pokemon", 63, 2, "pokemon-63-walkup.gif");
+VALUES ("pokemon", 63, 2, "pokemon-63-walkright.gif");
 
 INSERT INTO animations (type, id, animationtype, animation)
-VALUES ("pokemon", 63, 3, "pokemon-63-walkleft.gif");
+VALUES ("pokemon", 63, 3, "pokemon-63-walkup.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 63, 4, "pokemon-63-walkleft.gif");
+
+INSERT INTO spells (name, casttime, cooldown, movecast, manacost, range, targettype)
+VALUES ("psychic", 1500000000, 8000000000, 0, 80, 30, 2);
+
+INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
+VALUES (1, "q", 1);
