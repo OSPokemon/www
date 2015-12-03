@@ -29,7 +29,7 @@ INSERT INTO animations (type, id, animationtype, animation)
 VALUES ("pokemon", 63, 4, "pokemon-63-walkleft.gif");
 
 INSERT INTO spells (name, casttime, cooldown, movecast, manacost, range, targettype)
-VALUES ("psychic", 1500000000, 8000000000, 0, 80, 30, 2);
+VALUES ("Psychic", 1500000000, 8000000000, 0, 80, 30, 2);
 
 INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
 VALUES (1, "q", 1);
