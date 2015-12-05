@@ -70,7 +70,8 @@ CREATE TABLE spells(
   movecast INTEGER,
   manacost INTEGER,
   range NUMBER,
-  targettype INTEGER
+  targettype INTEGER,
+  graphic TEXT
 );
 
 CREATE TABLE spell_reagents(
@@ -79,30 +80,42 @@ CREATE TABLE spell_reagents(
   quantity INTEGER
 );
 
--- CREATE TABLE species(
---   id INTEGER PRIMARY KEY NOT NULL,
---   name TEXT,
---   tag TEXT,
---   description TEXT,
---   hidden_ability INTEGER,
---   genderless INTEGER,
---   gender_ratio NUMBER,
---   catch_rate INTEGER,
---   breedable INTEGER,
---   egg_cycles INTEGER,
---   height NUMBER,
---   weight NUMBER,
---   xp_yield INTEGER,
---   xp_curve INTEGER,
---   body_style TEXT,
---   color TEXT,
---   tameness INTEGER
--- );
+CREATE TABLE species(
+  id INTEGER PRIMARY KEY NOT NULL,
+  name TEXT,
+  tag TEXT,
+  description TEXT,
+  hidden_ability INTEGER,
+  genderless INTEGER,
+  gender_ratio NUMBER,
+  catch_rate INTEGER,
+  breedable INTEGER,
+  egg_cycles INTEGER,
+  height NUMBER,
+  weight NUMBER,
+  xp_yield INTEGER,
+  xp_curve INTEGER,
+  body_style TEXT,
+  color TEXT,
+  tameness INTEGER
+);
 
--- CREATE TABLE species_types(
---   species_id INTEGER,
---   type_id INTEGER
--- );
+CREATE TABLE species_stats(
+  species_id INTEGER,
+  stat TEXT,
+  value INTEGER
+);
+
+CREATE TABLE species_spells(
+  species_id INTEGER,
+  spell_id  INTEGER,
+  ai_usable INTEGER
+);
+
+CREATE TABLE species_types(
+  species_id INTEGER,
+  type_id INTEGER
+);
 
 -- CREATE TABLE abilities_species(
 --   ability_id INTEGER,
@@ -118,15 +131,4 @@ CREATE TABLE spell_reagents(
 --   species_id INTEGER,
 --   stat TEXT,
 --   value INTEGER
--- );
-
--- CREATE TABLE species_stats(
---   species_id INTEGER,
---   stat TEXT,
---   value INTEGER
--- );
-
--- CREATE TABLE players_pokemon (
---   player_id INTEGER,
---   pokemon_id INTEGER
 -- );

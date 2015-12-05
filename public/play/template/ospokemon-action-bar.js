@@ -38,5 +38,13 @@ Reckoner.provide('ospokemon-action-bar', function() {
     while (navbar.children().length > abilities.length) {
       navbar[0].removeChild(navbar.children().last()[0])
     }
+
+    navbar.children().removeClass("targeting");
+
+    navbar.children().each(function (index, el) {
+      if (ospokemon.ui.hover && ospokemon.ui.hover.hotkey == el.hotkey) {
+        $(el).addClass("targeting");
+      }
+    });
   }
 });

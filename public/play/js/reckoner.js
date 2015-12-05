@@ -24,6 +24,11 @@ $(function() {
 
     searching[name] = 3;
 
+    Reckoner.loadController(name);
+    Reckoner.loadView(name);
+  }
+
+  Reckoner.loadController = function(name) {
     var js_path = Reckoner.buildJsPath(name);
     $.getScript(js_path)
     .done(function() {
@@ -34,7 +39,9 @@ $(function() {
       searching[name] -= 2;
       if (searching[name] == 0) Reckoner.sweep(name);
     });
+  }
 
+  Reckoner.loadView = function(name) {
     var html_path = Reckoner.buildHtmlPath(name);
     var link = $('<link id="' + name + '-template" src="' + html_path + '"></link>');
     $('head').append(link);

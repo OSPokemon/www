@@ -21,6 +21,42 @@ body {
 
 .ospokemon-action-bar .navbar-brand {
   padding: 0px;
+  padding-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+
+.ospokemon-action-bar-button {
+  width: 64px;
+  height: 64px;
+  font-weight: bold;
+}
+
+.ospokemon-action-bar-button.targeting {
+  border: 5px solid rgba(0,255,0,0.5);
+}
+
+.ospokemon-action-bar-button .name{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.ospokemon-action-bar-button .hotkey{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.ospokemon-action-bar-button .cooldown{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.ospokemon-action-bar-button .navbar-brand {
+  padding: 0px;
   height: 64px;
 }
 
@@ -32,4 +68,15 @@ body {
 
 .ospokemon-entity.active {
   border-color: green;
+}
+
+.ospokemon-targeting {
+  height: 32px;
+  width: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+  border-radius: 16px;
+  background-color: green;
+  opacity: 0.5;
+  position:absolute;
 }
