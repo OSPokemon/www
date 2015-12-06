@@ -1,5 +1,5 @@
 INSERT INTO players (name, class, health, maxhealth, x, y, password) 
-VALUES ("zach", 1, 100, 100, 500, 500, "password");
+VALUES ("zach", 30, 100, 100, 500, 500, "password");
 
 INSERT INTO pokemon (name, x, y, species, level, experience, ability, friendship, gender, nature, height, weight, originaltrainer, shiny, item)
 VALUES ("abra", 550, 550, 63, 10, 200, 1, 85, 1, 1, 52.5, 40.1, 1, 0, 0);
@@ -28,8 +28,23 @@ VALUES ("pokemon", 63, 3, "pokemon-63-walkup.gif");
 INSERT INTO animations (type, id, animationtype, animation)
 VALUES ("pokemon", 63, 4, "pokemon-63-walkleft.gif");
 
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("trainer", 30, 0, "trainer-30-portrait.png");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("trainer", 30, 1, "trainer-30-walkdown.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("trainer", 30, 2, "trainer-30-walkright.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("trainer", 30, 3, "trainer-30-walkup.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("trainer", 30, 4, "trainer-30-walkleft.gif");
+
 INSERT INTO spells (name, casttime, cooldown, movecast, manacost, range, targettype, "graphic")
-VALUES ("Psychic", 1500000000, 8000000000, 0, 80, 30, 2, "spell-94.gif");
+VALUES ("Psychic", 1500000000, 8000000000, 0, 80, 30, 1, "spell-94.gif");
 
 INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
 VALUES (1, "q", 1);

@@ -11,8 +11,8 @@ Reckoner.provide('ospokemon-action-bar', function() {
     if (ospokemon.ui.active) {
       portrait = "url(animation/"+ospokemon.entities[ospokemon.ui.active].Portrait + ")";
 
-      for (var i=0; i<ospokemon.control[ospokemon.ui.active].Controls.Abilities.length; i++) {
-        var val = ospokemon.control[ospokemon.ui.active].Controls.Abilities[i];
+      for (var i=0; i<ospokemon.control[ospokemon.ui.active].Abilities.length; i++) {
+        var val = ospokemon.control[ospokemon.ui.active].Abilities[i];
         abilities.push(val);
       }
     }
@@ -39,11 +39,12 @@ Reckoner.provide('ospokemon-action-bar', function() {
       navbar[0].removeChild(navbar.children().last()[0])
     }
 
-    navbar.children().removeClass("targeting");
+    navbar.children().children('a').removeClass("targeting");
 
     navbar.children().each(function (index, el) {
-      if (ospokemon.ui.hover && ospokemon.ui.hover.hotkey == el.hotkey) {
-        $(el).addClass("targeting");
+      if ((ospokemon.ui.hover && ospokemon.ui.hover.hotkey == el.data.Hotkey)
+         || (ospokemon.ui.target == el.data.Hotkey)) {
+        $('a', el).addClass("targeting");
       }
     });
   }

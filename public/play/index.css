@@ -4,6 +4,11 @@ body {
   /*padding-bottom: 70px;*/
 }
 
+.container {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 #ospokemon-camera {
   width: 100%;
   max-width: 100%;
@@ -13,6 +18,10 @@ body {
 
 #ospokemon-camera .viewport {
   position: relative;
+}
+
+#ospokemon-camera.targeting .ospokemon-entity:hover{
+  border-color: blue;
 }
 
 .ospokemon-action-bar {
@@ -32,7 +41,16 @@ body {
   font-weight: bold;
 }
 
-.ospokemon-action-bar-button.targeting {
+/*.ospokemon-action-bar-button.targeting {
+}*/
+
+.ospokemon-action-bar-button a{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.ospokemon-action-bar-button a.targeting{
   border: 5px solid rgba(0,255,0,0.5);
 }
 
@@ -63,7 +81,8 @@ body {
 .ospokemon-entity {
   position: absolute;
   border-radius: 32px;
-  border: 2px solid transparent;
+  border: 2px solid;
+  border-color: transparent;
 }
 
 .ospokemon-entity.active {
