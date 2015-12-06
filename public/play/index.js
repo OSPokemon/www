@@ -71,6 +71,10 @@ $(function() {
     else if (ospokemon.ui.target) {
       var el = e.target;
 
+      while (!el.data && el != ospokemon.ui.camera) {
+        el = el.parentNode;
+      }
+
       if (el.data && e.button == 0) {
         var entityId = el.data.Id;
 

@@ -89,6 +89,48 @@ body {
   border-color: green;
 }
 
+.ospokemon-entity .graphic {
+  position: absolute;
+  top: 0px;
+}
+
+.ospokemon-entity .action-plate {
+  z-index: 1;
+  position: relative;
+  display: inline-block;
+  margin-top: -10px;
+  border: 2px solid black;
+  border-bottom: 0px;
+  border-radius: 2px;
+  height: 24px;
+  white-space: nowrap;
+}
+
+.ospokemon-entity .action-plate div {
+  z-index: 1;
+}
+
+.ospokemon-entity .action-graphic {
+  width: 20px;
+  height: 20px;
+}
+
+.ospokemon-entity .action-name {
+  margin-top: -2px;
+}
+
+.ospokemon-entity .action-castbar {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+
+.ospokemon-entity .action-castbar .action-completion {
+  border: 2px solid blue;
+  border-radius: 2px;
+}
+
 .ospokemon-targeting {
   height: 32px;
   width: 32px;
