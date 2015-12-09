@@ -48,14 +48,10 @@ $(function() {
   .mouseup(function(e) {
     if (ospokemon.ui.hover) {
       if (e.button == 0) {
-        var point = {};
-        point.left = $(ospokemon.ui.camera).css("left");
-        point.top = $(ospokemon.ui.camera).css("top");
-        ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
-        ospokemon.ui.hover = false;
-
-        point.left = point.left - ospokemon.ui.camera.offset.x;
-        point.top = point.top - ospokemon.ui.camera.offset.y;
+        var point = {
+          x: e.clientX - ospokemon.ui.camera.offset.x,
+          y: e.clientY - ospokemon.ui.camera.offset.y
+        };
 
         var message = {
           entity: ospokemon.ui.active,
@@ -63,10 +59,12 @@ $(function() {
           target: point
         }
 
+        console.log(message)
         ospokemon.connection.send(JSON.stringify(message));
-      }
 
-      ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
+        ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
+        ospokemon.ui.hover = false;
+      }
     }
     else if (ospokemon.ui.target) {
       var el = e.target;
@@ -103,7 +101,11 @@ $(function() {
       ospokemon.connection.send(JSON.stringify(message));
     }
 
-    ospokemon.ui.hover = ospokemon.ui.target = rclick = rdrag = false;
+    if (ospokemon.ui.hover) {
+      ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
+      ospokemon.ui.hover = false;
+    }
+    ospokemon.ui.target = rclick = rdrag = false;
   })
   .mousemove(function(e) {
     if (ospokemon.ui.hover) {

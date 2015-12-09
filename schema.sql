@@ -16,8 +16,6 @@ CREATE TABLE players(
   id INTEGER PRIMARY KEY NOT NULL,
   name TEXT,
   class INTEGER,
-  health INTEGER,
-  maxhealth INTEGER,
   x NUMBER,
   y NUMBER,
   password TEXT
@@ -27,6 +25,29 @@ CREATE TABLE players_pokemon(
   player_id INTEGER,
   box INTEGER,
   pokemon_id INTEGER
+);
+
+CREATE TABLE players_spells(
+  player_id INTEGER,
+  spell_base_id INTEGER,
+  name INTEGER,
+  keybinding TEXT
+);
+
+CREATE TABLE players_spells_targetdata(
+  player_id INTEGER,
+  spell_base_id INTEGER,
+  keybinding TEXT,
+  key TEXT,
+  value TEXT
+);
+
+CREATE TABLE players_stats(
+  player_id INTEGER,
+  stat TEXT,
+  value INTEGER,
+  maxvalue INTEGER,
+  basemaxvalue INTEGER
 );
 
 CREATE TABLE pokemon(
