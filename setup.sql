@@ -63,7 +63,7 @@ VALUES ("trainer", 26, 4, "trainer-26-walkleft.gif");
 -- Spells
 
 INSERT INTO spells (id, name, casttime, cooldown, movecast, manacost, range, targettype, graphic)
-VALUES (1001, "TogglePokemonSummon", 500000000, 5000000000, 1, 0, 30, 1, "pokeball-opening.gif");
+VALUES (1001, "TogglePokemonSummon", 500000000, 5000000000, 1, 0, 30, 2, "pokeball-opening.gif");
 
 INSERT INTO spells (id, name, casttime, cooldown, movecast, manacost, range, targettype, graphic)
 VALUES (94, "Psychic", 1500000000, 8000000000, 0, 80, 30, 2, "spell-94.gif");

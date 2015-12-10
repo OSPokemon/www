@@ -10,7 +10,7 @@ Reckoner.provide('ospokemon-camera', function() {
   };
 
   this.removeEntity = function(e) {
-    $('.viewport', this).remove(e); // ?
+    $('.viewport', this)[0].removeChild(e); // ?
   };
 
   this.update = function() {

@@ -23,16 +23,14 @@ Reckoner.provide('ospokemon-action-bar', function() {
     $('.navbar-brand', this).css("content", portrait)
 
     var navbar = $('.navbar-nav', this);
-    var navbarchildren = navbar.children();
 
     for (var i=0; i<abilities.length; i++) {
-      if (i >= navbarchildren.length) {
+      if (i >= navbar.children().length) {
         var newChild = Reckoner.build('ospokemon-action-bar-button', this);
         navbar.append(newChild);
-        navbarchildren = navbar.children();
       }
 
-      navbarchildren[i].update(abilities[i]);
+      navbar.children()[i].update(abilities[i]);
     }
 
     while (navbar.children().length > abilities.length) {

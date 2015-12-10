@@ -12,10 +12,10 @@ Reckoner.provide('ospokemon-action-bar-button', function(actionbar) {
 
   this.click = function(e) {
     if (this.data.TargetType == 1) {
-      ospokemon.ui.HoverControl(this.data.Hotkey);
+      ospokemon.ui.TargetControl(this.data.Hotkey);
     }
     else if (this.data.TargetType == 2) {
-      ospokemon.ui.TargetControl(this.data.Hotkey);
+      ospokemon.ui.HoverControl(this.data.Hotkey);
     }
     else {
       var message = {

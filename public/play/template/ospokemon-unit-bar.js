@@ -5,23 +5,30 @@ Reckoner.provide('ospokemon-unit-bar', function() {
   Reckoner.search('ospokemon-unit-bar-button');
 
   this.update = function() {
-    var navbar = $(this).find('.navbar-nav');
-    var navbarChildren = navbar.children();
+    var navbar = $('.navbar-nav', this);
     var navCounter = 0;
 
     for (var key in ospokemon.control) {
       var val = ospokemon.control[key];
 
-      if (navCounter >= navbarChildren.length) {
-        var newChild = Reckoner.build('ospokemon-unit-bar-button', this);
-        navbar.append(newChild);
-        navbarChildren = navbar.children();
+      if (val == null) {
+        continue;
       }
 
-      if (navbarChildren[navCounter]) {
-        navbarChildren[navCounter].update(val)
+      if (navCounter >= navbar.children().length) {
+        var newChild = Reckoner.build('ospokemon-unit-bar-button', this);
+        navbar.append(newChild);
       }
+
+      if (navbar.children()[navCounter]) {
+        navbar.children()[navCounter].update(val)
+      }
+
       navCounter++;
+    }
+
+    while (navbar.children().length > navCounter) {
+      navbar[0].removeChild(navbar.children().last()[0])
     }
   }
 
