@@ -66,7 +66,10 @@ INSERT INTO spells (id, name, casttime, cooldown, movecast, manacost, range, tar
 VALUES (1001, "TogglePokemonSummon", 500000000, 5000000000, 1, 0, 30, 2, "pokeball-opening.gif");
 
 INSERT INTO spells (id, name, casttime, cooldown, movecast, manacost, range, targettype, graphic)
-VALUES (94, "Psychic", 1500000000, 8000000000, 0, 80, 30, 2, "spell-94.gif");
+VALUES (94, "Psychic", 1500000000, 8000000000, 0, 80, 60, 1, "spell-94.gif");
+
+INSERT INTO spells (id, name, casttime, cooldown, movecast, manacost, range, targettype, graphic)
+VALUES (16, "Gust", 500000000, 4000000000, 0, 30, 50, 2, "spell-16.gif");
 
 -- Players
 
@@ -91,6 +94,9 @@ VALUES (1, "health", 200, 200, 200);
 
 INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
 VALUES (1, "q", 94);
+
+INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
+VALUES (1, "w", 16);
 
 INSERT INTO players_pokemon (player_id, box, pokemon_id)
 VALUES (1, 0, 1);
@@ -125,6 +131,9 @@ VALUES (2, 0, 2);
 
 INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
 VALUES (2, "q", 94);
+
+INSERT INTO pokemon_spells(pokemon_id, keybinding, spell_id)
+VALUES (2, "w", 16);
 
 INSERT INTO players_spells (player_id, spell_base_id, name, keybinding)
 VALUES (2, 1001, "cakeeater", "q");

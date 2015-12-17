@@ -5,10 +5,10 @@ Reckoner.provide('ospokemon-entity', function() {
     this.data = data;
 
     $(this).css({
-      top: this.data.Physics.Y,
-      left: this.data.Physics.X,
-      height: this.data.Physics.Height + "px",
-      width: this.data.Physics.Width + "px"
+      top: this.data.Physics.Shape.Anchor.Y,
+      left: this.data.Physics.Shape.Anchor.X,
+      height: this.data.Physics.Shape.Height + "px",
+      width: this.data.Physics.Shape.Width + "px"
     });
 
     $('.graphic', this).css({content: "url(animation/" + this.data.Graphic + ")"});

@@ -49,8 +49,8 @@ $(function() {
     if (ospokemon.ui.hover) {
       if (e.button == 0) {
         var point = {
-          x: e.clientX - ospokemon.ui.camera.offset.x,
-          y: e.clientY - ospokemon.ui.camera.offset.y
+          x: e.clientX - ospokemon.ui.camera.offset.x - ospokemon.entities[ospokemon.ui.active].Physics.Shape.Width/2,
+          y: e.clientY - ospokemon.ui.camera.offset.y - ospokemon.entities[ospokemon.ui.active].Physics.Shape.Height/2
         };
 
         var message = {
@@ -88,9 +88,9 @@ $(function() {
       $(ospokemon.ui.camera).removeClass('targeting');
     }
     else if (e.button == 2 && rclick && ospokemon.ui.active) {
-      rclick.x -= ospokemon.entities[ospokemon.ui.active].Physics.Width/2;
+      rclick.x -= ospokemon.entities[ospokemon.ui.active].Physics.Shape.Width/2;
       rclick.x -= ospokemon.ui.camera.offset.x;
-      rclick.y -= ospokemon.entities[ospokemon.ui.active].Physics.Height/2;
+      rclick.y -= ospokemon.entities[ospokemon.ui.active].Physics.Shape.Height/2;
       rclick.y -= ospokemon.ui.camera.offset.y;
 
       var message = {
