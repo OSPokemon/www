@@ -1,8 +1,8 @@
-Reckoner.provide('ospokemon-action-bar', function() {
+(function() {
   ospokemon.ui.actionbar = this;
   console.log('ospokemon-action-bar');
 
-  Reckoner.search('ospokemon-action-bar-button');
+  ospokemon.loader.Load('ospokemon-action-bar-button');
   
   this.update = function() {
     var portrait = "";
@@ -26,7 +26,7 @@ Reckoner.provide('ospokemon-action-bar', function() {
 
     for (var i=0; i<abilities.length; i++) {
       if (i >= navbar.children().length) {
-        var newChild = Reckoner.build('ospokemon-action-bar-button', this);
+        var newChild = ospokemon.loader.Build('ospokemon-action-bar-button', this);
         navbar.append(newChild);
       }
 
@@ -46,4 +46,4 @@ Reckoner.provide('ospokemon-action-bar', function() {
       }
     });
   }
-});
+})

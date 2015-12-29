@@ -1,8 +1,7 @@
-console.log("ospokemon-unit-bar");
-Reckoner.provide('ospokemon-unit-bar', function() {
+(function() {
   ospokemon.ui.unitbar = this;
 
-  Reckoner.search('ospokemon-unit-bar-button');
+  ospokemon.loader.Load('ospokemon-unit-bar-button');
 
   this.update = function() {
     var navbar = $('.navbar-nav', this);
@@ -16,7 +15,7 @@ Reckoner.provide('ospokemon-unit-bar', function() {
       }
 
       if (navCounter >= navbar.children().length) {
-        var newChild = Reckoner.build('ospokemon-unit-bar-button', this);
+        var newChild = ospokemon.loader.Build('ospokemon-unit-bar-button', this);
         navbar.append(newChild);
       }
 
@@ -43,4 +42,4 @@ Reckoner.provide('ospokemon-unit-bar', function() {
       $(button).addClass('active');
     }
   }
-});
+})

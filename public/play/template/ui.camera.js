@@ -1,9 +1,9 @@
-Reckoner.provide('ospokemon-camera', function() {
+(function() {
   ospokemon.ui.camera = this;
   this.entities = {};
   this.offset = {x:0, y:0};
 
-  Reckoner.search('ospokemon-entity');
+  ospokemon.loader.Load('ospokemon-entity');
 
   this.addEntity = function(e) {
     $('.viewport', this)[0].appendChild(e);
@@ -25,7 +25,7 @@ Reckoner.provide('ospokemon-camera', function() {
         delete oldentities[k];
       }
       else {
-        this.entities[k] = Reckoner.build('ospokemon-entity', v);
+        this.entities[k] = ospokemon.loader.Build('ospokemon-entity', v);
         if (this.entities[k]) this.addEntity(this.entities[k])
       }
     }
@@ -54,4 +54,4 @@ Reckoner.provide('ospokemon-camera', function() {
     $('.viewport', this).css("top", this.offset.y);
     $('.viewport', this).css("left", this.offset.x);
   };
-});
+})

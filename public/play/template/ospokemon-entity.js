@@ -1,4 +1,4 @@
-Reckoner.provide('ospokemon-entity', function() {
+(function() {
   console.log("ospokemon-entity");
   
   this.update = function(data) {

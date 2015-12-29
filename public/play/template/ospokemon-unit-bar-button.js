@@ -1,4 +1,4 @@
-Reckoner.provide('ospokemon-unit-bar-button', function(unitBar) {
+(function(unitBar) {
   this.unitBar = unitBar;
 
   var me = this;
@@ -10,4 +10,4 @@ Reckoner.provide('ospokemon-unit-bar-button', function(unitBar) {
     this.data = val;
     $(this).children('.name')[0].innerHTML = this.data.Name;
   }
-});
+})

@@ -1,4 +1,4 @@
-Reckoner.provide('ospokemon-action-bar-button', function(actionbar) {
+(function(actionbar) {
   console.log("ospokemon-action-bar-button");
 
   this.actionbar = actionbar;
@@ -28,4 +28,4 @@ Reckoner.provide('ospokemon-action-bar-button', function(actionbar) {
   }
 
   $(this).click(this.click)
-});
+})
