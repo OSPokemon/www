@@ -1,4 +1,3 @@
-
 CREATE TABLE animations(
   type TEXT,
   id INTEGER,
@@ -18,7 +17,9 @@ CREATE TABLE players(
   class INTEGER,
   x NUMBER,
   y NUMBER,
-  password TEXT
+  map TEXT,
+  password TEXT,
+  gamemaster NUMBER
 );
 
 CREATE TABLE players_pokemon(
@@ -45,9 +46,10 @@ CREATE TABLE players_spells_targetdata(
 CREATE TABLE players_stats(
   player_id INTEGER,
   stat TEXT,
-  value INTEGER,
-  maxvalue INTEGER,
-  basemaxvalue INTEGER
+  value NUMBER,
+  regen NUMBER,
+  max NUMBER,
+  base NUMBER
 );
 
 CREATE TABLE pokemon(
@@ -78,20 +80,24 @@ CREATE TABLE pokemon_spells(
 CREATE TABLE pokemon_stats(
   pokemon_id INTEGER,
   stat TEXT,
-  ev INTEGER,
-  iv INTEGER,
-  value INTEGER
+  value NUMBER,
+  regen NUMBER,
+  max NUMBER,
+  base NUMBER
 );
 
 CREATE TABLE spells(
   id INTEGER PRIMARY KEY NOT NULL,
   name TEXT,
   casttime NUMBER,
-  cooldown NUMBER,
   movecast INTEGER,
+  channeltime NUMBER,
+  movechannel INTEGER,
+  cooldown NUMBER,
   manacost INTEGER,
-  range NUMBER,
   targettype INTEGER,
+  range NUMBER,
+  size NUMBER,
   graphic TEXT
 );
 

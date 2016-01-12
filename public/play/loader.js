@@ -21,7 +21,6 @@ ospokemon.loader.LoadTemplate = function(name) {
 
   var html_path = 'template/' + name + '.html';
   return $.get(html_path).done(function(data) {
-    console.log('load template completed: ' + name)
     ospokemon.loader.objects[name].template = data
   })
   .fail(function() {
@@ -34,7 +33,6 @@ ospokemon.loader.LoadScript = function(name) {
 
   var js_path = 'template/' + name + '.js';
   return $.get(js_path).done(function(data) {
-    console.log('load script completed: ' + name)
     ospokemon.loader.objects[name].script = eval(data)
   })
   .fail(function() {

@@ -1,5 +1,16 @@
 ospokemon.ui = {};
 
+ospokemon.ui.HoverControl = function(key) {
+  if (key) {
+    ospokemon.ui.aimability = key
+    $('#ospokemon-camera').addClass('crosshair')
+  }
+  else {
+    ospokemon.ui.aimability = false
+    $('#ospokemon-camera').removeClass('crosshair')
+  }
+}
+
 ospokemon.loader.Load('ui.camera', function() {
   var loader = ospokemon.loader.objects['ui.camera']
 

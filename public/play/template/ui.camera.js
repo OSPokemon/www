@@ -1,4 +1,6 @@
 (function() {
+  console.log('camera')
+  
   ospokemon.ui.camera = this;
   this.entities = {};
   this.offset = {x:0, y:0};

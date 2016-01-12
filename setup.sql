@@ -31,6 +31,21 @@ INSERT INTO animations (type, id, animationtype, animation)
 VALUES ("pokemon", 16, 4, "pokemon-16-walkleft.gif");
 
 INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 37, 0, "pokemon-37-portrait.png");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 37, 1, "pokemon-37-walkdown.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 37, 2, "pokemon-37-walkright.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 37, 3, "pokemon-37-walkup.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
+VALUES ("pokemon", 37, 4, "pokemon-37-walkleft.gif");
+
+INSERT INTO animations (type, id, animationtype, animation)
 VALUES ("trainer", 30, 0, "trainer-30-portrait.png");
 
 INSERT INTO animations (type, id, animationtype, animation)
@@ -118,7 +133,7 @@ INSERT INTO players_stats (player_id, stat, value, maxvalue, basemaxvalue)
 VALUES (2, "speed", 25, 25, 25);
 
 INSERT INTO pokemon (name, x, y, species, level, experience, ability, friendship, gender, nature, height, weight, originaltrainer, shiny, item)
-VALUES ("cakeeater", 700, 700, 16, 10, 200, 1, 85, 2, 1, 32.5, 20.1, 2, 0, 0);
+VALUES ("cakeeater", 700, 700, 37, 10, 200, 1, 85, 2, 1, 32.5, 20.1, 2, 0, 0);
 
 INSERT INTO pokemon_stats (pokemon_id, stat, ev, iv, value)
 VALUES (2, "speed", 35, 35, 35);

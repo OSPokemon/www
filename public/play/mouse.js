@@ -1,5 +1,7 @@
 ospokemon.mouse = {}
 
+console.log('mouse')
+
 $(document)
 .mousedown(function(e) {
   if (e.button == 2 && !ospokemon.ui.hover && !ospokemon.ui.target) {
@@ -7,7 +9,7 @@ $(document)
   }
 })
 .mouseup(function(e) {
-  if (ospokemon.ui.hover) {
+  if (ospokemon.ui.aimability) {
     if (e.button == 0) {
       var point = {
         x: e.clientX - ospokemon.ui.camera.offset.x - ospokemon.entities[ospokemon.ui.active].Physics.Shape.Width/2,
@@ -16,15 +18,12 @@ $(document)
 
       var message = {
         entity: ospokemon.ui.active,
-        ability: ospokemon.ui.hover.hotkey,
+        ability: ospokemon.ui.aimability,
         target: point
       }
 
-      console.log(message)
       ospokemon.connection.send(JSON.stringify(message));
-
-      ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
-      ospokemon.ui.hover = false;
+      ospokemon.ui.HoverControl(false)
     }
   }
   else if (ospokemon.ui.target) {
@@ -62,9 +61,8 @@ $(document)
     ospokemon.connection.send(JSON.stringify(message));
   }
 
-  if (ospokemon.ui.hover) {
-    ospokemon.ui.camera.removeChild(ospokemon.ui.hover);
-    ospokemon.ui.hover = false;
+  if (ospokemon.ui.aimability) {
+    ospokemon.ui.HoverControl(false)
   }
   ospokemon.ui.target = ospokemon.mouse.rclick = ospokemon.mouse.rdrag = false;
 })
