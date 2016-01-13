@@ -1,11 +1,81 @@
 <html>
-  <head>
-  </head>
-  <body>
-    <form method="POST" action="/signup.go">
-      <input name="username" placeholder="Username"><br/>
-      <input name="password" type="password" placeholder="password"><br/>
-      <button type="submit">Submit</button>
-    </form>
-  </body>
+	<head>
+		<style>
+			body {
+				margin: 0px;
+				background: #eee;
+			}
+			div#loginContainer {
+				margin: 0px auto;
+				width: 400px;
+				margin-top: 100px;
+				padding-bottom: 25px;
+				border: 1px solid #a3a3e2;
+				background: #fff;
+				border-radius: 3px;
+			}
+			div#loginContainer span {
+				display: block;
+				padding: 15px;
+				font-family: arial;
+				border-bottom: 1px solid #d3c6c6;
+				margin-bottom: 50px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				color: #4a4a60;
+				background: #eee;
+			 }
+			div#loginContainer input {
+				margin: 0px auto;
+				margin-top: 5px;
+				padding: 10px 15px 10px 15px;
+				display: block;
+				border-radius: 3px;
+				border: 1px solid #d3c6c6;
+				outline: none;
+				background: #ede1e1;
+			}
+			div#loginContainer input:hover {
+				border: 1px solid #d3c6c6;
+
+			}
+			div#loginContainer input:active{
+				border: 1px solid #a3a3e2;
+			}
+			div#loginContainer input:focus {
+				border: 1px solid #a3a3e2;
+				background: #eee;
+				box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
+
+			}						
+			button {
+				display: block;
+				margin: 0px auto;
+				margin-top: 15px;
+				padding: 5px 10px 5px 10px;
+				border: 1px solid #24243a;
+				color: #fff;
+				cursor: pointer;
+				background: #7474b2;
+				border-radius: 5px;
+			}
+			button:hover {
+				background: #a3a3e2;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="loginContainer">
+			<span>
+				OSPokemon  <a style="float:right;">Sign Up</a>
+			</span>
+			<form method="POST" action="/signup.go">
+				<input name="username" type="text" placeholder="username">
+				<input name="password" type="password" placeholder="password">
+				<input name="firstname" type="text" placeholder="first name">
+				<input name="lastname" type="text" placeholder="last name">
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</body>
 </html>
