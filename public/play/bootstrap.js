@@ -3,7 +3,7 @@ $(function() {
     world: {}
   };
 
-  $.getScript('loader.js')
+  $.getScript('/js/loader.js')
   .done(function() {
     $.getScript('ui.js')
     $.getScript('connection.js');

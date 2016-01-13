@@ -102,6 +102,7 @@
                   $('#username')[0].innerHTML=data.Name
                   $('#usermap')[0].innerHTML=data.Map
                   $('#trainerportrait')[0].src=data.Portrait
+                  $('#usrmoney')[0].innerHTML = "$"+data.Money
               })
           })
       })
@@ -111,7 +112,7 @@
       }
 
       newTrainer = function() {
-          window.location.pathname="/create-profile"
+          window.location.pathname="/create-trainer"
       }
 
     </script>
@@ -130,6 +131,9 @@
               ---
             </span>
             <span id="usermap" name="usermap">
+              ---
+            </span>
+            <span id="usrmoney" name="usrlvl">
               ---
             </span>
             <span id="usrlvl" name="usrlvl">

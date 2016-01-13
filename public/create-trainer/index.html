@@ -1,0 +1,48 @@
+<hmtl>
+  <head>
+    <script src="/js/jquery-2.1.4.min.js"></script>
+  </head>
+  <body>
+    <script>
+      ospokemon = {}
+      ospokemon.species = ospokemon.species || {}
+
+      $.getJSON('/all-species.json').done(function(data) {
+        $.each(data, function(index, data) {
+          ospokemon.species[data.Id] = data
+
+          var row = $('<option value="'+data.Id+'">'+data.Id+': '+data.Name+'</option>')
+          $("#species-select").append(row)
+        })
+      })
+
+      $(function() {
+        $("#species-select").change(function(event) {
+          var graphic = "http://previewcf.turbosquid.com/Preview/2014/05/25__19_38_41/POKEBALL_LASTRENDER_thumb.jpgaee5aa9b-36fa-4679-a03f-0297d4c6b9a6Small.jpg"
+          var speciesId = event.target.value
+          var data = ospokemon.species[speciesId]
+          
+          if (data) {
+            graphic = data.Graphic
+          }
+
+          $("#species-portrait")[0].src = graphic
+        })
+      })
+    </script>
+    <form method="POST" action="/create-trainer.go">
+      <input name="name" placeholder="name">
+      Trainer Class: <select name="class" id="trainerclass-select">
+        <option value="26">26: Toughguy</option>
+        <option value="30">30: Seth</option>
+      </select><br/>
+      <input name="pokemonname" placeholder="Pokemon name">
+      Pokemon Species: <select name="species" id="species-select">
+        <option value="">---</option>
+      </select>
+      <img id="species-portrait" src="http://previewcf.turbosquid.com/Preview/2014/05/25__19_38_41/POKEBALL_LASTRENDER_thumb.jpgaee5aa9b-36fa-4679-a03f-0297d4c6b9a6Small.jpg"><br/>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

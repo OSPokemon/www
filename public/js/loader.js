@@ -1,6 +1,7 @@
+ospokemon = ospokemon || {}
 ospokemon.loader = {
   objects: {},
-};
+}
 
 ospokemon.loader.Load = function(name, cb) {
   var object = ospokemon.loader.objects[name];
