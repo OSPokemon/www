@@ -83,27 +83,57 @@
     <script>
       $.getJSON('/account.json').done(function(data) {
         console.log(data)
+
+        $.each(data.profiles, function(index, data) {
+            var option = $('<option value="' + data + '">'+data+'</option>')
+            $('#profiles-select').append(option)
+        })
       })
+
+      $(function() {
+          $('#profiles-select').change(function(event) {
+              var value = event.target.value
+
+              if (!value) return
+
+              $.getJSON('/trainer/' + value + '.json').done(function(data) {
+                  console.log(data)
+
+                  $('#username')[0].innerHTML=data.Name
+                  $('#usermap')[0].innerHTML=data.Map
+                  $('#trainerportrait')[0].src=data.Portrait
+              })
+          })
+      })
+
+      logout=function() {
+        window.location.pathname = "/logout.go"
+      }
+
+      newTrainer = function() {
+          window.location.pathname="/create-profile"
+      }
+
     </script>
     <div id="main">
       <div id="trainerCard">
         <div class="header">
           OSPokemon
-          <button>Logout</button>
+          <button onclick="logout()">Logout</button>
         </div>
         <div id="trainerHeader">
           <div class="left">
-            <img src="http://orig08.deviantart.net/630c/f/2015/003/4/9/ash_ketchum_of_kanto_johto_hoenn_sinnoh_and_unova_by_playlistmasterrcm-d8cekig.jpg">
+            <img id="trainerportrait" src="http://orig08.deviantart.net/630c/f/2015/003/4/9/ash_ketchum_of_kanto_johto_hoenn_sinnoh_and_unova_by_playlistmasterrcm-d8cekig.jpg">
           </div>
           <div class="right">
             <span id="username" name="username">
-              Ash Ketchum
+              ---
             </span>
-            <span id="userLVL" name="userLVL">
-              LVL: 50
+            <span id="usermap" name="usermap">
+              ---
             </span>
-            <span id="userXP" name="userXP">
-              XP: 523423
+            <span id="usrlvl" name="usrlvl">
+              ---
             </span>
           </div>
         </div>
@@ -122,9 +152,11 @@
           </div>
         </div>
         <div id="windowOptions">
-          <button> new </button>
-          <button> profile chooser </button>
-          <button> play </button>   
+          <button onclick="newTrainer()"> new </button>
+          <select id="profiles-select">
+            <option value="">---</option>
+          </select>
+          <button> play </button>
        </div>
       </div>
     </div>
