@@ -140,6 +140,22 @@
           window.location.pathname="/create-trainer"
       }
 
+      chooseTrainer = function() {
+        var value = $('#profiles-select')[0].value
+        var fd = new FormData();    
+        fd.append( 'trainer', value );
+        $.ajax({
+          url: '/choose-trainer.go',
+          data: fd,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function() {
+            window.location.pathname="/play"
+          }
+        }); 
+      }
+
     </script>
     <div id="main">
       <div id="trainerCard">
@@ -191,7 +207,11 @@
           <select id="profiles-select">
             <option value="">---</option>
           </select>
+<<<<<<< HEAD
           <button style="float:right"> Play </button>
+=======
+          <button onclick="chooseTrainer()"> play </button>
+>>>>>>> origin/master
        </div>
       </div>
     </div>
