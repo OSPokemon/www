@@ -5,6 +5,7 @@
   <body>
     <script>
       ospokemon = {}
+      ospokemon.classes = ospokemon.classes || {}
       ospokemon.species = ospokemon.species || {}
 
       $.getJSON('/all-species.json').done(function(data) {
@@ -13,6 +14,15 @@
 
           var row = $('<option value="'+data.Id+'">'+data.Id+': '+data.Name+'</option>')
           $("#species-select").append(row)
+        })
+      })
+
+      $.getJSON('/all-classes.json').done(function(data) {
+        $.each(data, function(index, data) {
+          ospokemon.classes[data.Id] = data
+
+          var row = $('<option value="'+data.Id+'">'+data.Id+': '+data.Name+'</option>')
+          $('#class-select').append(row)
         })
       })
 
@@ -28,14 +38,26 @@
 
           $("#species-portrait")[0].src = graphic
         })
+
+        $('#class-select').change(function(event) {
+          var graphic = 'https://orig01.deviantart.net/9702/f/2014/199/c/2/ash_ketchum_by_spritedrunk-d7ra7da.gif'
+          var classId = event.target.value
+          var data = ospokemon.classes[classId]
+
+          if (data) {
+            graphic = data.Graphic
+          }
+
+          $('#class-portrait')[0].src = graphic
+        })
       })
     </script>
     <form method="POST" action="/create-trainer.go">
       <input name="name" placeholder="name">
-      Trainer Class: <select name="class" id="trainerclass-select">
-        <option value="26">26: Toughguy</option>
-        <option value="30">30: Seth</option>
-      </select><br/>
+      Trainer Class: <select name="class" id="class-select">
+        <option value="">---</option>
+      </select>
+      <img id="class-portrait" src="https://orig01.deviantart.net/9702/f/2014/199/c/2/ash_ketchum_by_spritedrunk-d7ra7da.gif"><br/>
       <input name="pokemonname" placeholder="Pokemon name">
       Pokemon Species: <select name="species" id="species-select">
         <option value="">---</option>
