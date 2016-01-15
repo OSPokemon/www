@@ -12,7 +12,7 @@
     });
 
     $('.action-name', this)[0].innerHTML = this.data.Name;
-    $('.graphic', this).css({content: "url(/image/" + this.data.Graphic + ")"});
+    $('.graphic', this).css({content: "url("+this.data.Graphic + ")"});
 
     if (this.data.Action) {
       $('.action-graphic', this).css({content: "url(/image/" + this.data.Action.Graphic + ")"});

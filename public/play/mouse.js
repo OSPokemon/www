@@ -48,9 +48,9 @@ $(document)
     $(ospokemon.ui.camera).removeClass('targeting');
   }
   else if (e.button == 2 && ospokemon.mouse.rclick && ospokemon.ui.active) {
-    ospokemon.mouse.rclick.x -= ospokemon.entities[ospokemon.ui.active].Physics.Shape.Width/2;
+    ospokemon.mouse.rclick.x -= ospokemon.entities[ospokemon.ui.active].Shape.Width/2;
     ospokemon.mouse.rclick.x -= ospokemon.ui.camera.offset.x;
-    ospokemon.mouse.rclick.y -= ospokemon.entities[ospokemon.ui.active].Physics.Shape.Height/2;
+    ospokemon.mouse.rclick.y -= ospokemon.entities[ospokemon.ui.active].Shape.Height/2;
     ospokemon.mouse.rclick.y -= ospokemon.ui.camera.offset.y;
 
     var message = {

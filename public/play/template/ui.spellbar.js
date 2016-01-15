@@ -9,7 +9,7 @@
     var abilities = [];
 
     if (ospokemon.ui.active) {
-      portrait = "url(animation/"+ospokemon.entities[ospokemon.ui.active].Portrait + ")";
+      portrait = "url("+ospokemon.entities[ospokemon.ui.active].Portrait + ")";
 
       for (var i=0; i<ospokemon.control[ospokemon.ui.active].Abilities.length; i++) {
         var val = ospokemon.control[ospokemon.ui.active].Abilities[i];
