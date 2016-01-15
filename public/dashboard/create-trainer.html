@@ -1,6 +1,9 @@
 <html>
   <head>
     <script src="/js/jquery-2.1.4.min.js"></script>
+    <title>
+      Create Trainer
+    </title>
     <style type="text/css">
       body {
         margin: 0px;
@@ -8,39 +11,71 @@
       }
       div#trainerCard {
         margin: 0px auto;
-        width: 450px;
+        width: 550px;
         margin-top: 100px;
         border: 1px solid #a3a3e2;
         background: #fff;
         border-radius: 3px;
+        min-height: 375px;
       }
+      
       div.header { 
-        display: block;
-        padding: 15px;
+        padding: 10px;
         font-family: arial;
         border-bottom: 1px solid #d3c6c6;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         color: #4a4a60;
         background: #eee;
+        height: 50px;
+        vertical-align: middle  ;
+        line-height: 25px;
+      }
+      div.header span {
+        display: block;
+        margin-top: -15px !important;
       }
       div.header button {
           float: right;
+          padding: 5px;
+          margin: 10px 0px;
+          background: #8c6996;
+          border: 1px solid #58445e;
+          color: #eee;
+          font-size: 12px;
+          border-radius: 3px;
+          cursor: pointer;
       }
-      div#sectionHeader {
+      div.header button:hover {
+          background: #58445e;
+      }
+      div#trainerHeader {
         padding: 10px;
-        border-bottom: 1px solid #ccc;
-        width: 430px;
-        min-height: 75px;
+        padding-top: 20px;
+        width: 530px;
+        min-height: 185px;
       }
-      div#sectionHeader img {
-        width: 75px;
-        height: 75px;
+      div#trainerHeader img {
+        width: 100px;
+        height: 100px;
         background-size: cover;
+        margin: 0px 15px;
       }
       div.left{
         float: left;
-        width: 100px;
+        width: 325px;
+      }
+      div.left input {
+        display: block;
+        margin-top: 5px;
+        padding: 10px 15px 10px 15px;
+        display: block;
+        border-radius: 3px;
+        border: 1px solid #d3c6c6;
+        outline: none;
+        background: #ede1e1;
+        min-width: 250px;
+        margin-bottom: 15px;
       }
       div.right {
         float: left;
@@ -49,7 +84,11 @@
         display: block;
         font-size: 13px;
         font-family: arial;
-        margin-top: 5px;
+        margin-top: -5px;
+      }
+      div.right img {
+        display: block;
+        border: 1px solid #ccc;
       }
       div.right span#username {
         font-size: 18px;
@@ -59,23 +98,47 @@
         min-height: 50px;
       }
       div.partyItem {
-        width: 40px;
-        height: 40px;
-        background: #ede1e1;
+        width: 50px;
+        height: 50px;
+        background: #eddef2;
         float: left;
         border: 1px solid #a3a3e2;
         margin: 0px 5px;
         padding: 5px;
         font-size: 13px;
+        border-radius: 2px;
       }
       div#windowOptions {
         border-top: 1px solid #a3a3e2;
         padding: 10px;
+        margin-top: 60px;
         text-align: center;
+        height: 30px;
 
       }
       div#windowOptions button {
         padding: 5px;
+        margin:0px 0px;
+        background: #8c6996;
+        border: 1px solid #58445e;
+        color: #eee;
+        font-size: 13px;
+        border-radius: 3px;
+        cursor: pointer;
+      } 
+      div#windowOptions button:hover {
+        background: #58445e;
+      }
+      form {
+        padding: 15px;
+        padding-bottom: 35px;
+      }
+      div.header img {
+        height: 30px !important;
+        width: 30px !important;
+        margin-right: 10px;
+         margin-top: 10px !important;
+         float: left;
       }
     </style>
   </head>
@@ -83,50 +146,106 @@
     <script>
       $.getJSON('/account.json').done(function(data) {
         console.log(data)
+
+        $.each(data.profiles, function(index, data) {
+            var option = $('<option value="' + data + '">'+data+'</option>')
+            $('#profiles-select').append(option)
+        })
       })
+
+      $(function() {
+          $('#profiles-select').change(function(event) {
+              var value = event.target.value
+
+              if (!value) return
+
+              $.getJSON('/trainer/' + value + '.json').done(function(data) {
+                  console.log(data)
+
+                  $('#username')[0].innerHTML=data.Name
+                  $('#usermap')[0].innerHTML=data.Map
+                  $('#trainerportrait')[0].src=data.Portrait
+                  $('#usrmoney')[0].innerHTML = "$"+data.Money
+              })
+          })
+      })
+
+      logout=function() {
+        window.location.pathname = "/logout.go"
+      }
+
+      newTrainer = function() {
+          window.location.pathname="/create-trainer"
+      }
+
+      chooseTrainer = function() {
+        var value = $('#profiles-select')[0].value
+        var fd = new FormData();    
+        fd.append( 'trainer', value );
+        $.ajax({
+          url: '/choose-trainer.go',
+          data: fd,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function() {
+            window.location.pathname="/play"
+          }
+        }); 
+      }
+
     </script>
     <div id="main">
       <div id="trainerCard">
         <div class="header">
-          OSPokemon
-          <button>Logout</button>
+         <img src="../img/OSlogo.png">
+        <spam>
+          OSPKMN
+        </span>
+          <button onclick="logout()">Logout</button>
         </div>
-        <div id="sectionHeader">
+        <div id="trainerHeader">
           <div class="left">
-            <span id="username" name="username">
-              Ash Ketchum
-            </span>
-            <span id="userLVL" name="userLVL">
-              LVL: 50
-            </span>
-            <span id="userXP" name="userXP">
-              XP: 523423
-            </span>
+            <form>
+              <input type="text" placeholder="Trainer Name">
+              <select>
+                <option>
+                  Battler
+                </option>
+                <option>
+                  Nigger
+                </option>
+                <option>
+                  Cry baby
+                </option>
+              </select>
+            </form>
+
+            <form>
+              <input type="text" placeholder="PKMN Name">
+              <select>
+                <option>
+                 Species
+                </option>
+                <option>
+                  Nigger
+                </option>
+                <option>
+                  Cry baby
+                </option>
+              </select>
+            </form>
           </div>
           <div class="right">
-           <img src="http://orig08.deviantart.net/630c/f/2015/003/4/9/ash_ketchum_of_kanto_johto_hoenn_sinnoh_and_unova_by_playlistmasterrcm-d8cekig.jpg">
-          </div>
-        </div>
-        <div id="sectionHeader">
-          <div class="left">
-            <span id="username" name="username">
-              Ash Ketchum
-            </span>
-            <span id="userLVL" name="userLVL">
-              LVL: 50
-            </span>
-            <span id="userXP" name="userXP">
-              XP: 523423
-            </span>
-          </div>
-          <div class="right">
-           <img src="http://orig08.deviantart.net/630c/f/2015/003/4/9/ash_ketchum_of_kanto_johto_hoenn_sinnoh_and_unova_by_playlistmasterrcm-d8cekig.jpg">
+              <img id="trainerportrait" src="http://www.absoluteanime.com/pokemon/brock.jpg">
+              <br> <br>
+              <img id="trainerportrait" src="http://orig08.deviantart.net/630c/f/2015/003/4/9/ash_ketchum_of_kanto_johto_hoenn_sinnoh_and_unova_by_playlistmasterrcm-d8cekig.jpg">
+
           </div>
         </div>
         <div id="windowOptions">
-          <button> new </button>
-          <button> profile chooser </button>
-          <button> play </button>   
+           <button style="float:left;margin-left:-325px;" onclick="chooseTrainer()"> Back </button>
+          <button style="float:right" onclick="chooseTrainer()"> Create </button>
        </div>
       </div>
     </div>

@@ -1,9 +1,12 @@
 <html>
 	<head>
+	<title>
+		Sign Up
+	</title>
 		<style>
 			body {
 				margin: 0px;
-				background: #eee;
+        		background: #eee;
 			}
 			div#loginContainer {
 				margin: 0px auto;
@@ -14,17 +17,7 @@
 				background: #fff;
 				border-radius: 3px;
 			}
-			div#loginContainer span {
-				display: block;
-				padding: 15px;
-				font-family: arial;
-				border-bottom: 1px solid #d3c6c6;
-				margin-bottom: 50px;
-				border-top-left-radius: 3px;
-				border-top-right-radius: 3px;
-				color: #4a4a60;
-				background: #eee;
-			 }
+			
 			div#loginContainer input {
 				margin: 0px auto;
 				margin-top: 5px;
@@ -33,10 +26,10 @@
 				border-radius: 3px;
 				border: 1px solid #d3c6c6;
 				outline: none;
-				background: #ede1e1;
+       		   background: #eee;
 			}
 			div#loginContainer input:hover {
-				border: 1px solid #d3c6c6;
+				border: 1px solid #ede1e1;
 
 			}
 			div#loginContainer input:active{
@@ -52,7 +45,7 @@
 				display: block;
 		        padding: 5px;
 		        margin:0px auto;
-		        margin-top: 10px;
+		        margin-top: 25;
 		        background: #8c6996;
 		        border: 1px solid #58445e;
 		        color: #eee;
@@ -63,20 +56,43 @@
 			button:hover {
 				background: #a3a3e2;
 			}
+			 div.header { 
+		        display: block;
+		        padding: 15px;
+		        border-bottom: 1px solid #d3c6c6;
+		        border-top-left-radius: 3px;
+		        border-top-right-radius: 3px;
+		        color: #4a4a60;
+		        background: #eee;
+		        line-height: 30px;
+		        margin-bottom: 30px;
+		      }
+		      div.header img {
+		        height: 30px !important;
+		        width: 30px !important;
+		        margin-right: 10px;
+		        float: left;
+
+		      }	
+		      div.header span {
+		  }
 		</style>
 	</head>
 	<body>
 		<div id="loginContainer">
-			<span>
-				OSPokemon  <a style="float:right;">Sign Up</a>
-			</span>
-			<form method="POST" action="/signup.go">
-				<input name="username" type="text" placeholder="username">
-				<input name="password" type="password" placeholder="password">
-				<input name="firstname" type="text" placeholder="first name">
-				<input name="lastname" type="text" placeholder="last name">
-				<button type="submit">Login</button>
-			</form>
-		</div>
+				<div class="header">
+			        <img src="../img/OSlogo.png">
+			         <span>
+			         	 OSPKMN
+			         </span>
+		        </div>
+				<form method="POST" action="/signup.go">
+					<input name="username" type="text" placeholder="username">
+					<input name="password" type="password" placeholder="password">
+					<input name="firstname" type="text" placeholder="first name">
+					<input name="lastname" type="text" placeholder="last name">
+					<button type="submit">Continue Sign Up</button>
+				</form>
+			</div>
 	</body>
 </html>

@@ -10,6 +10,9 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css"></script>
     <script src="/js/jquery-2.1.4.min.js"></script>
+    <title>
+    OSPKMN
+   </title>
     <style type="text/css">
       body {
         margin: 0px;
@@ -19,20 +22,24 @@
         margin: 0px auto;
         width: 550px;
         margin-top: 100px;
-        border: 1px solid #a3a3e2;
+        border: 1px solid #5b595b;
         background: #fff;
         border-radius: 3px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, .25);
+        box-shadow: 0px 0px 10px rgba(200, 200, 200, .75);
       }
       div.header { 
         display: block;
         padding: 15px;
-        font-family: arial;
         border-bottom: 1px solid #d3c6c6;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         color: #4a4a60;
         background: #eee;
+      }
+      div.header img {
+        height: 30px !important;
+        width: 30px !important;
+        margin-right: 10px;
       }
       div.header button {
           float: right;
@@ -54,24 +61,39 @@
         min-height: 85px;
       }
       div.left{
-        float: left;
         padding-left: 10px;
         width: 400px;
       }
       div.left span {
         font-size: 22px;
       }
-      div.right {
+      div.left a {
+        text-decoration: none;
+        color: #a3a3e2;
+        display: block;
+        margin-top: 50px;
+        font-size: 20px;
         float: left;
+      }
+      div.left a:hover {
+        text-decoration: underline;
+        color: #a3a3e2 !important;
+      }
+      div.right {
+        float: right;
       }
       div.right span {
         display: block;
         font-size: 13px;
         font-family: arial;
-        margin-top: -5px;
       }
       div.right span#username {
         font-size: 18px;
+      }
+      div.right span#username img {
+        height: 50px;
+        width: 50px;
+        float: left;
       }
       div.right #onlineStatus {
         width: 100px;
@@ -80,30 +102,22 @@
         float: left;
         border: 1px solid #a3a3e2;
         padding: 10px;
-        line-height: 35px;
+        color: #58445e;
+        line-height:25px;
         font-size: 18px;
         text-align: center;
         border-radius: 2px;
+        margin-top: -25px;
       }
-      div#partyList { 
-        padding: 15px;
-        min-height: 50px;
-      }
-      div.partyItem {
-        width: 50px;
-        height: 50px;
-        background: #eddef2;
-        float: left;
-        border: 1px solid #a3a3e2;
-        margin: 0px 5px;
-        padding: 5px;
-        font-size: 13px;
-        border-radius: 2px;
-      }
+     div#onlineStatus span {
+        font-size: 18px;
+         font-weight: bold !important;
+
+     }
       div#windowOptions {
         border-top: 1px solid #a3a3e2;
-        padding: 10px;
-        margin-top: 50px;
+        padding: 15px 0px 10px;
+        margin-top: 100px;
         text-align: center;
 
       }
@@ -113,8 +127,8 @@
         background: #8c6996;
         border: 1px solid #58445e;
         color: #eee;
-        font-size: 13px;
-        border-radius: 3px;
+        font-size: 15px;
+        border-radius: 5px;
         cursor: pointer;
       } 
       div#windowOptions button:hover {
@@ -126,24 +140,29 @@
     <div id="main">
       <div id="trainerCard">
         <div class="header">
-          OSPokemon
+        <img src="./img/OSlogo.png">
+          OSPKMN
         </div>
         <div id="trainerHeader">
           <div class="left">
              <span id="username" name="username">
-              Open Source Pokemon Game <br> <br>  Free To Play!
-            </span>
+            An  <i>Open Source</i> Pokemon Game  
+              </span>
+              <a href="./signup">
+                Free To Play!
+              </a>
           </div>
           <div class="right">
             <div id="onlineStatus">
-             1,413 Online
+              <span>
+              1,413 
+              </span>
+             Players Online
             </div>
-          </div>
         </div>
        
         <div id="windowOptions">
           <button onclick="window.location.pathname='./signup/'"> Login </button>
-       </div>
       </div>
     </div>
   </body>
