@@ -124,12 +124,21 @@
               if (!value) return
 
               $.getJSON('/trainer/' + value + '.json').done(function(data) {
-                  console.log(data)
-
                   $('#username')[0].innerHTML=data.Name
                   $('#usermap')[0].innerHTML=data.Map
                   $('#trainerportrait')[0].src=data.Portrait
                   $('#usrmoney')[0].innerHTML = "$"+data.Money
+
+                  $('#partyList')[0].innerHTML = ''
+                  $.each(data.Pokemon, function(index, pokemonId) {
+                      $.getJSON('/pokemon/'+pokemonId+'.json').done(function(data) {
+                        var row = $('<div class="partyItem"><img></img><span class="pokemonName"></span><span class="pokemonLevel"></span></div>')
+                        $('img', row)[0].src= data.Portrait
+                        $('span.pokemonName', row)[0].innerHTML = data.Name
+                        $('span.pokemonLevel', row)[0].innerHTML = 'LVL.'+ data.Level
+                        $('#partyList').append(row)
+                      })
+                  })
               })
           })
       })
@@ -187,24 +196,6 @@
           </div>
         </div>
         <div id="partyList">
-          <div class="partyItem">
-            PKMN #1
-          </div>
-          <div class="partyItem">
-            PKMN #2
-          </div>
-          <div class="partyItem">
-            PKMN #3
-          </div>
-          <div class="partyItem">
-            PKMN #4
-          </div>
-           <div class="partyItem">
-            PKMN #5
-          </div>
-           <div class="partyItem">
-            PKMN #6
-          </div>
         </div>
         <div id="windowOptions">
           <button style="float:left" onclick="newTrainer()"> New </button>
